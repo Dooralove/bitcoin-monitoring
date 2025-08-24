@@ -22,7 +22,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Install Compose
-        uses: docker/compose-action@v2
+        uses: docker/compose-action@v1
                
       - name: build containers
         run: docker-compose build
@@ -37,6 +37,7 @@ jobs:
 
       - name: stop containers
         run: docker-compose down
+
 
 
 
