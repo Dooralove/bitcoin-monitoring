@@ -1,0 +1,33 @@
+name: bitcoin transaction trackeron
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:  
+    
+      - name: Clone Files
+        uses: actions/checkout@v3 
+
+      - name: Install python
+        uses: actions/setup-python@v4
+        with: 
+          python-version: '3.11' 
+          
+      - name: build containers
+        run: docker-compose build
+        
+      - name: wait
+        run: sleep 20
+        
+      - name: run containers
+        run: docker-compose up -d
+
+      - name: Test running
+        run: curl https://localhost:5000
+
+      - name: stop containers
+        run: docker-compose down
