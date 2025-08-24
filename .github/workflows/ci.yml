@@ -20,8 +20,8 @@ jobs:
 
       - name: Install Docker Compose
         run: |
-          apt-get update
-          apt-get -y install docker-compose-plugin
+          sudo apt-get update
+          sudo apt-get -y install docker-compose-plugin
                
       - name: build containers
         run: docker-compose build
@@ -34,5 +34,6 @@ jobs:
 
       - name: stop containers
         run: docker-compose down
+
 
 
